@@ -1,0 +1,47 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="container">
+
+    <div class="card">
+      <div class="card-body">
+         
+        
+             <table class="table ">
+                 <thead>
+                     <tr>
+                        <th>Report Name</th>
+                        <th>Report File</th>
+                     </tr>
+                 </thead>
+                <tbody>
+                    
+                    {% for report in reports %}
+                        <tr>
+                            <td>{{report.report_name}}</td>
+                            <td ><a href="">{{report.report_file}}</a></td>
+
+                        </tr>
+                    
+                        
+                </tbody>
+                {% endfor %}
+             </table>
+        
+             
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript">
+      $(function() {
+          $('#id_time').datetimepicker({
+            format: 'MM/DD/YYYY HH:mm',
+            extraFormats: ['YYYY-MM-DD HH:mm:ss'],
+            sideBySide: true
+          });
+      });
+  </script>
+{% endblock %}

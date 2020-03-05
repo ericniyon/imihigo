@@ -1,0 +1,10 @@
+<option value="">---------</option>
+{% for indicator in indicators %}
+<option value="{{ indicator.pk }}">{{ indicator.indicator_name }}</option>
+{% endfor %}
+
+
+<option value="">---------</option>
+{% for target in targets %}
+<option value="{{ target.pk }}">{{ target.target_name }}</option>
+{% endfor %}

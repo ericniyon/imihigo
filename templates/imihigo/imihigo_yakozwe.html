@@ -1,0 +1,60 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="text-center">Rwamagana Imihigo 2019/2020</h5>
+        </div>
+      <div class="card-body">
+        
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th rowspan="2" colspan="1" >Outputs</th>
+            <th rowspan="2" colspan="1">Indicator</th>
+            <th rowspan="2" colspan="1">Baseline</th>
+            <th rowspan="2" colspan="1">Source of Data</th>
+            <th rowspan="1" colspan="4" >Targets/milestones</th>
+            <th rowspan="2" colspan="1">Annual Target</th>
+        </tr>
+
+        <tr>
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Q3</th>
+            <th>Q4</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in reports %}
+        <tr>
+            <td>{{report.items_to_report_on.indicator}}</td>
+            <td>{{report.items_to_report_on.target}}</td>
+            <td> {{report.items_to_report_on.item_target}} {{report.items_to_report_on.item}} {{report.items_to_report_on.measurement}} </td>
+            <td>District Administrative data source</td>
+            
+            <td>{{report.current_status}}</td>
+            <td>2</td>
+            <td>2</td>
+            
+            <td>{{ report.current_status }}</td>
+                {% for x in sum1 %}
+                    <td>{{x.items_to_report_on__item_target__sum}}</td>
+                  
+                {% endfor %}
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+      </div>
+
+    </div>
+
+  </div>
+
+  
+{% endblock %}

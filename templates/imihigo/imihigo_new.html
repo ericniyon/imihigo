@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="container">
+
+    <div class="card">
+      <div class="card-body">
+          <form method="POST"  id="personForm" data-indicators-url="{% url 'ajax_load_indicators' %}" data-targets-url="{% url 'ajax_load_targets' %}" enctype="multipart/form-data" autocomplete="off" class="form-horizontal" >
+            {% csrf_token %}
+                {{ imihigo_form|crispy }}
+                <button type="submit" class="btn btn-sm btn-outline-dark">Submit</button>
+          </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_sector").change(function () {
+      var url = $("#personForm").attr("data-indicators-url");
+      var sectorId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'sector': sectorId
+        },
+        success: function (data) {
+          $("#id_indicator").html(data);
+        }
+      });
+
+    });
+
+    $("#id_indicator").change(function () {
+      var url = $("#personForm").attr("data-targets-url");
+      var indicatorId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'indicator': indicatorId
+        },
+        success: function (data) {
+          $("#id_target").html(data);
+        }
+      });
+
+    });
+
+
+    
+  </script>
+{% endblock %}

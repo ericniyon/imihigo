@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="text-center">Rwamagana Imihigo 2019/2020</h5>
+        </div>
+      <div class="card-body">
+        <form action="" method="POST" enctype="application/x-www-form-urlencoded">
+        {% csrf_token %}
+
+            {{ raporo|crispy }}
+        <button type="submit" class="btn btn-sm btn-outline-dark">Save</button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  
+{% endblock %}
