@@ -34,7 +34,7 @@
         <tr>
             <td>{{report.items_to_report_on.indicator}}</td>
             <td>{{report.items_to_report_on.target}}</td>
-            <td> {{report.items_to_report_on.item_target}} {{report.items_to_report_on.item}} {{report.items_to_report_on.measurement}} </td>
+            <td> {{report.items_to_report_on.item}} {{report.items_to_report_on.item_target}} {{report.items_to_report_on.measurement}} </td>
             <td>District Administrative data source</td>
             
             <td>{{report.current_status}}</td>
@@ -42,12 +42,17 @@
             <td>2</td>
             
             <td>{{ report.current_status }}</td>
-                {% for x in sum1 %}
-                    <td>{{x.items_to_report_on__item_target__sum}}</td>
-                  
-                {% endfor %}
+
+            
+
+                <td>{{report.items_to_report_on.item_target|add:report.items_to_report_on.item_target}}</td>
+                    
+            
+
             {% endfor %}
-        </tr>
+        <!-- {% for indicator in items %}
+          <p>{{indicator.item_target}}</p>
+        {% endfor %} -->
     </tbody>
 </table>
       </div>

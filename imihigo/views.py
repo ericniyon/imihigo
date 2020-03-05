@@ -43,9 +43,13 @@ class Imihigo(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["reports"] = Raporo_yimihigo.objects.all().order_by('items_to_report_on')
-        context["items"] =Item.objects.all()
-        context['sum1']=Raporo_yimihigo.objects.values('items_to_report_on__indicator').annotate(Sum('items_to_report_on__item_target'))
+        indicator=Indicator_target.objects.all()
+        context["items"] =Item.objects.filter(indicator=1)
+        context['sum1']=Raporo_yimihigo.objects.values('items_to_report_on__item_target').annotate(Sum('items_to_report_on__item_target'))
         # context['total_paid']= Raporo_yimihigo.objects.all().annotate(Sum('items_to_report_on__item_target'))['items_to_report_on__item_target__sum']
+
+        
+
 
         return context
     
